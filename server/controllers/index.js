@@ -7,15 +7,14 @@ const services = require('../services')
 
 
 const postRegisterUser = async (req, res, next) => {
-    // const { user, content } = req.body
+    const { name, password } = req.body
     try {
-        await services.registerUser(
-            // user, content
-        )
-        // other service call (or same service, different function can go here)
-        // i.e. - await generateBlogpostPreview()
-        res.sendStatus(200)
-        next()
+        const newUser = await services.registerUser(name, password)
+
+        return res.status(201).json({
+            status: 201,
+            newUser
+        })
     } catch (e) {
         console.log(e.message)
         res.sendStatus(500) && next(error)
@@ -23,14 +22,14 @@ const postRegisterUser = async (req, res, next) => {
 }
 
 const postLoginUser = async (req, res, next) => {
-    // const { user, content } = req.body
+    const { name } = req.body
     try {
-        await services.loginUser(
-            // user, content
-        )
+        const user = await services.loginUser(name)
 
-        res.sendStatus(200)
-        next()
+        return res.status(200).json({
+            status: 200,
+            user
+        })
     } catch (e) {
         console.log(e.message)
         res.sendStatus(500) && next(error)
@@ -38,17 +37,16 @@ const postLoginUser = async (req, res, next) => {
 }
 
 const getGetUser = async (req, res, next) => {
-    // const { user, content } = req.body
+    // const { name } = req.body 
     try {
-        await services.getUser(
-            // user, content
-        )
+        const users = await services.getUser()
 
-        res.sendStatus(200)
-        next()
+        return res.status(200).json({
+            status: 200,
+            users
+        })
     } catch (e) {
-        console.log(e.message)
-        res.sendStatus(500) && next(error)
+        return res.status(400).json({ status: 400, message: e.message });
     }
 }
 
@@ -75,7 +73,7 @@ const postLogWorkout = async (req, res, next) => {
         )
 
         res.sendStatus(200)
-        next()
+        // next()
     } catch (e) {
         console.log(e.message)
         res.sendStatus(500) && next(error)

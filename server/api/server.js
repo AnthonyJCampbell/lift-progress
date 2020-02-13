@@ -17,7 +17,17 @@ const router = require('../routes')
 server.use('/api', router)
 
 server.get('/', (req, res) => {
-  res.status(200).json({ "message": "Server's alive!"})
+  res.status(200).json({
+    status: 200,
+    message: "Server's alive!"
+  })
 })
+
+server.get('*', (req, res) => {
+  res.status(404).json({
+    status: 404,
+    message: 'Invalid route!'
+  });
+});
 
 module.exports = server;
