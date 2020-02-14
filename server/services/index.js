@@ -34,7 +34,8 @@ const getUser = async () => {
 
 const setWeights = async () => {
     try {
-        return await models.setWeightsModel()
+        const weights = await models.setWeightsModel()
+        return weights
     } catch (e) {
         throw new Error(e.message)
     }
@@ -42,7 +43,8 @@ const setWeights = async () => {
 
 const logWorkout = async () => {
     try {
-        return await models.logWorkoutModel()
+        const workouts = await models.logWorkoutModel()
+        return workouts
     } catch (e) {
         throw new Error(e.message)
     }

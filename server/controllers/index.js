@@ -16,8 +16,7 @@ const postRegisterUser = async (req, res, next) => {
             newUser
         })
     } catch (e) {
-        console.log(e.message)
-        res.sendStatus(500) && next(error)
+        return res.status(400).json({ status: 400, message: e.message });
     }
 }
 
@@ -31,8 +30,7 @@ const postLoginUser = async (req, res, next) => {
             user
         })
     } catch (e) {
-        console.log(e.message)
-        res.sendStatus(500) && next(error)
+        return res.status(400).json({ status: 400, message: e.message });
     }
 }
 
@@ -57,26 +55,25 @@ const patchSetWeights = async (req, res, next) => {
             // user, content
         )
 
-        res.sendStatus(200)
-        next()
+        return res.status(200).json({
+            status: 200,
+            weights
+        })
     } catch (e) {
-        console.log(e.message)
-        res.sendStatus(500) && next(error)
+        return res.status(400).json({ status: 400, message: e.message });
     }
 }
 
 const postLogWorkout = async (req, res, next) => {
     // const { user, content } = req.body
     try {
-        await services.logWorkout(
-            // user, content
-        )
+        await services.logWorkout(workout_data)
 
-        res.sendStatus(200)
-        // next()
+        return res.status(201).json({
+            status: 201,
+        })
     } catch (e) {
-        console.log(e.message)
-        res.sendStatus(500) && next(error)
+        return res.status(400).json({ status: 400, message: e.message });
     }
 }
 

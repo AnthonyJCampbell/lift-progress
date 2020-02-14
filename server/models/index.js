@@ -1,7 +1,7 @@
 const db = require('../config/db')
 
 const registerUserModel = async (name, password) => {
-    
+
     await db.getDb().db()
         .collection('users')
         .insertOne({
@@ -26,13 +26,23 @@ const loginUserModel = async (name) => {
 const getUserModel = async () => {
     const user = await db.getDb().db()
         .collection('users')
-        .find({}).toArray()
+        .find({})
+        .toArray()
 
     return user
 }
 
-const setWeightsModel = async () => {
-    return 1
+const setWeightsModel = async (user) => {
+    const weights = await db.getDb().db()
+        .collection('users')
+        .insertOne({
+            "weights": {
+                "bench": "100"
+            }
+        }, { "name": "Gavin" })
+        // .toArray()
+
+    return weights
 }
 
 const logWorkoutModel = async () => {
