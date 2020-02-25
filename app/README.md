@@ -14,4 +14,4 @@
 
 - Styling should be dark-mode first
 - Set a 2-week deadline for initial prototype
-- Make it a feature, not an app
+- Make it a feature, not an app 
