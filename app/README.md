@@ -11,3 +11,7 @@
         - FUTURE: Show estimated length based on previous workout logs
 - When workout starts, user gets taken to 'start of exercise'-screen. On it, the user is shown what plates they'll need for the upcoming lifts (i.e. 6x20kgs, 2x10kgs, 2x2.5kg, and 2x1.25kgs)
     - FUTURE: Add support for fractional plates?
+
+- Styling should be dark-mode first
+- Set a 2-week deadline for initial prototype
+- Make it a feature, not an app
